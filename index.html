@@ -1,14 +1,173 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student's Progress Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <div id="loader-overlay">
+        <div class="loader-card">
+            <div class="loader"></div>
+            <p>Loading Dashboard...</p>
+        </div>
+    </div>
+    <div class="container" style="display: none;">
+        <header>
+            <div>
+                <h1 id="student-name-header">Student's Progress Dashboard</h1>
+                <p>View real-time attendance, listen rate, and repetition progress.</p>
+            </div>
+            <div class="student-id"
+                <span id="student-id-span">Student ID: STDXXX</span>
+            </div>
+        </header>
+        <main>
+            <section class="summary-cards">
+                <summary-card title="Total Sessions Tracked" value="0" id="total-sessions" type="sessions"></summary-card>
+                <summary-card title="Average Listen Rate" value="0%" id="avg-listen-rate" type="listen-rate"></summary-card>
+                <summary-card title="Total Pending Reps" value="0" id="total-pending-reps" type="pending-reps"></summary-card>
+                <summary-card title="Reps Due: TODAY" value="0" id="reps-due-today" type="due-today"></summary-card>
+                <summary-card title="Reps Due: TOMORROW" value="0" id="reps-due-tomorrow" type="due-tomorrow"></summary-card>
+            </section>
+            <section class="history-card">
+                <div class="card-header">
+                    <div class="card-header-text">
+                        <h2 class="card-title">Session History</h2>
+                        <p class="card-subtitle">Track listen rates and session details from previous classes.</p>
+                    </div>
+                    <div class="card-header-controls">
+                        <div class="filter">
+                            <select id="period" name="period">
+                                <option value="all-time">All Time</option>
+                                <option value="last-7-days">Last 7 Days</option>
+                                <option value="last-30-days" selected>Last 30 Days</option>
+                                <option value="this-month">This Month</option>
+                                <option value="last-3-months">Last 3 Months</option>
+                                <option value="this-year">This Year</option>
+                            </select>
+                        </div>
+                        <div class="view-buttons">
+                            <button id="table-view-btn" class="active">Table</button>
+                            <button id="calendar-view-btn">Calendar</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="table-view">
+                    <div class="table-container">
+                        <table id="session-history-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Listen Rate</th>
+                                    <th>Subject</th>
+                                    <th>Teacher</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="calendar-view" class="hidden">
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <button id="prev-month-btn">&lt;</button>
+                            <h2 id="month-year"></h2>
+                            <button id="next-month-btn">&gt;</button>
+                        </div>
+                        <div class="calendar-legend">
+                            <div class="legend-item">
+                                <div class="legend-color-box high"></div>
+                                <span>&ge;90%</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color-box medium"></div>
+                                <span>75%-90%</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color-box low"></div>
+                                <span>&lt;75%</span>
+                            </div>
+                        </div>
+                        <div class="calendar-grid day-names">
+                            <div class="day-name">SUN</div>
+                            <div class="day-name">MON</div>
+                            <div class="day-name">TUE</div>
+                            <div class="day-name">WED</div>
+                            <div class="day-name">THU</div>
+                            <div class="day-name">FRI</div>
+                            <div class="day-name">SAT</div>
+                        </div>
+                        <div id="calendar-days" class="calendar-grid"></div>
+                    </div>
+                </div>
+            </section>
+            <section class="schedule-card">
+                <div class="card-header">
+                    <div class="card-header-text">
+                        <h2 class="card-title">Upcoming Classes Schedule</h2>
+                        <p class="card-subtitle">Schedule view for all known upcoming sessions.</p>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="upcoming-classes-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Subject</th>
+                                <th>Teacher</th>
+                                <th>Room</th>
+                                <th>Session ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>Thank you for using the Progress Dashboard!</p>
+        </footer>
+    </div>
+
+    <div id="repetition-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Repetition Details</h2>
+            </div>
+            <div class="modal-body">
+                <table id="repetition-table">
+                    <thead>
+                        <tr>
+                            <th>Repetition Date</th>
+                            <th>Curve ID</th>
+                            <th>Repetition No</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="alert-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Missing Information</h2>
+            </div>
+            <div class="modal-body">
+                <p>Please provide a valid student ID to access the dashboard.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js" type="module"></script>
 </body>
 </html>
