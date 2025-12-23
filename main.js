@@ -131,7 +131,7 @@ async function loadDashboardData() {
         teacher: item.teacher
     }));
 
-    upcomingClassesData = upcoming_classes.sort((a, b) => new Date(b.date) - new Date(a.date)).map(item => ({
+    upcomingClassesData = upcoming_classes.sort((a, b) => new Date(a.date) - new Date(b.date)).map(item => ({
         date: new Date(item.date).toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }),
         startTime: new Date(item.start_time).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }),
         endTime: new Date(item.end_time).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }),
@@ -142,7 +142,6 @@ async function loadDashboardData() {
     }));
     
     forgettingCurveData = forgetting_curve;
-    console.log(forgettingCurveData);
     
 
     filterSessionHistory();
