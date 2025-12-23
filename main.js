@@ -142,6 +142,8 @@ async function loadDashboardData() {
     }));
     
     forgettingCurveData = forgetting_curve;
+    console.log(forgettingCurveData);
+    
 
     filterSessionHistory();
     populateUpcomingClasses('upcoming-classes-table', upcomingClassesData);
@@ -205,22 +207,22 @@ function updateRepetitionCards() {
     const tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
 
-    pendingRepsData = forgettingCurveData.filter(r => {
-        const repDate = new Date(r.repetition_date);
+    pendingRepsData = forgettingCurveData.filter(r => {        
+        const repDate = new Date(r['Repetition Date']);
         repDate.setHours(0,0,0,0);
-        return r.learned_update === "" && repDate <= today;
+        return r['Learned update'] === "" && repDate < today;
     });
 
-    repsDueTodayData = forgettingCurveData.filter(r => {
-        const repDate = new Date(r.repetition_date);
+    repsDueTodayData = forgettingCurveData.filter(r => {      
+        const repDate = new Date(r['Repetition Date']);
         repDate.setHours(0,0,0,0);
-        return r.learned_update === "" && repDate.getTime() === today.getTime();
+        return r['Learned update'] === "" && repDate.getTime() === today.getTime();
     });
 
     repsDueTomorrowData = forgettingCurveData.filter(r => {
-        const repDate = new Date(r.repetition_date);
+        const repDate = new Date(r['Repetition Date']);
         repDate.setHours(0,0,0,0);
-        return r.learned_update === "" && repDate.getTime() === tomorrow.getTime();
+        return r['Learned update'] === "" && repDate.getTime() === tomorrow.getTime();
     });
 
 
