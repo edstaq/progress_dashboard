@@ -1,45 +1,45 @@
 
 class SummaryCard extends HTMLElement {
-  constructor() {
-    super();
-    const shadow = this.attachShadow({ mode: 'open' });
-    const type = this.getAttribute('type');
+    constructor() {
+        super();
+        const shadow = this.attachShadow({ mode: 'open' });
+        const type = this.getAttribute('type');
 
-    const icons = {
-      sessions: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>',
-      'listen-rate': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="20" x2="8" y2="4"></line><line x1="16" y1="20" x2="16" y2="12"></line></svg>',
-      'pending-reps': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6"/><path d="M22 11.5A10 10 0 0 1 12 22C6.5 22 2 17.5 2 12S6.5 2 12 2"/></svg>',
-      'due-today': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>',
-      'due-tomorrow': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>'
-    };
+        const icons = {
+            sessions: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>',
+            'listen-rate': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="20" x2="8" y2="4"></line><line x1="16" y1="20" x2="16" y2="12"></line></svg>',
+            'pending-reps': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6"/><path d="M22 11.5A10 10 0 0 1 12 22C6.5 22 2 17.5 2 12S6.5 2 12 2"/></svg>',
+            'due-today': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>',
+            'due-tomorrow': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>'
+        };
 
-    const colors = {
-        sessions: { bg: '#eef2ff', icon: '#6366f1' },
-        'listen-rate': { bg: '#f0fdf4', icon: '#22c55e' },
-        'pending-reps': { bg: '#faf5ff', icon: '#a855f7' },
-        'due-today': { bg: '#fff1f2', icon: '#ef4444' },
-        'due-tomorrow': { bg: '#ecfeff', icon: '#06b6d4' }
-    };
+        const colors = {
+            sessions: { bg: '#eef2ff', icon: '#6366f1' },
+            'listen-rate': { bg: '#f0fdf4', icon: '#22c55e' },
+            'pending-reps': { bg: '#faf5ff', icon: '#a855f7' },
+            'due-today': { bg: '#fff1f2', icon: '#ef4444' },
+            'due-tomorrow': { bg: '#ecfeff', icon: '#06b6d4' }
+        };
 
-    const cardColors = colors[type] || { bg: '#ffffff', icon: '#333' };
+        const cardColors = colors[type] || { bg: '#ffffff', icon: '#333' };
 
-    const wrapper = document.createElement('div');
-    wrapper.setAttribute('class', 'card');
+        const wrapper = document.createElement('div');
+        wrapper.setAttribute('class', 'card');
 
-    const textContent = document.createElement('div');
-    const title = document.createElement('h3');
-    title.textContent = this.getAttribute('title');
-    const value = document.createElement('p');
-    value.textContent = this.getAttribute('value');
-    textContent.appendChild(title);
-    textContent.appendChild(value);
+        const textContent = document.createElement('div');
+        const title = document.createElement('h3');
+        title.textContent = this.getAttribute('title');
+        const value = document.createElement('p');
+        value.textContent = this.getAttribute('value');
+        textContent.appendChild(title);
+        textContent.appendChild(value);
 
-    const iconWrapper = document.createElement('div');
-    iconWrapper.setAttribute('class', 'icon');
-    iconWrapper.innerHTML = icons[type] || '';
+        const iconWrapper = document.createElement('div');
+        iconWrapper.setAttribute('class', 'icon');
+        iconWrapper.innerHTML = icons[type] || '';
 
-    const style = document.createElement('style');
-    style.textContent = `
+        const style = document.createElement('style');
+        style.textContent = `
       :host {
         flex: 1;
       }
@@ -75,16 +75,16 @@ class SummaryCard extends HTMLElement {
       }
     `;
 
-    shadow.appendChild(style);
-    shadow.appendChild(wrapper);
-    wrapper.appendChild(textContent);
-    wrapper.appendChild(iconWrapper);
-    this.valueElement = value; 
-  }
+        shadow.appendChild(style);
+        shadow.appendChild(wrapper);
+        wrapper.appendChild(textContent);
+        wrapper.appendChild(iconWrapper);
+        this.valueElement = value;
+    }
 
-  updateValue(newValue) {
-      this.valueElement.textContent = newValue;
-  }
+    updateValue(newValue) {
+        this.valueElement.textContent = newValue;
+    }
 }
 customElements.define('summary-card', SummaryCard);
 
@@ -100,63 +100,63 @@ let repsDueTodayData = [];
 let repsDueTomorrowData = [];
 
 async function loadDashboardData() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const student_id = urlParams.get('id');
+    const urlParams = new URLSearchParams(window.location.search);
+    const student_id = urlParams.get('id');
 
-  if (!student_id) {
-    loaderOverlay.style.display = 'none';
-    alertModal.classList.add('show');
-    return;
-  }
-
-  loaderOverlay.classList.add('show');
-  console.log(`Student ID from URL parameter "id": ${student_id}`);
-  const url = `https://script.google.com/macros/s/AKfycbzuZ0AzXHVxmbMswnX-5osGNTbm6MgdQ_E05lMIzstfs59Rgi60_shk4W2ENAZPZl8s/exec?student_id=${student_id}`;
-
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    
-    const { student_name, student_id: studentId, session_log, upcoming_classes, forgetting_curve } = data;
-
-    document.getElementById('student-name-header').textContent = `${student_name}'s Progress Dashboard`;
-    document.getElementById('student-id-span').textContent = `Student ID: ${studentId}`;
-
-    sessionHistoryData = session_log.sort((a, b) => new Date(b.date) - new Date(a.date)).map(item => ({
-        date: new Date(item.date).toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }),
-        startTime: new Date(item.start_time).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }),
-        endTime: new Date(item.end_time).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }),
-        listenRate: item.student_listen_rate * 20, // Assuming 5 is 100%
-        subject: item.subject,
-        teacher: item.teacher
-    }));
-
-    upcomingClassesData = upcoming_classes.sort((a, b) => new Date(a.date) - new Date(b.date)).map(item => ({
-        date: new Date(item.date).toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }),
-        startTime: new Date(item.start_time).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }),
-        endTime: new Date(item.end_time).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }),
-        subject: item.subject,
-        teacher: item.teacher,
-        room: item.class_room_id,
-        sessionId: item.session_temp_id
-    }));
-    
-    forgettingCurveData = forgetting_curve;
-    
-
-    filterSessionHistory();
-    populateUpcomingClasses('upcoming-classes-table', upcomingClassesData);
-    updateRepetitionCards();
-
-  } catch (error) {
-    console.error("Error fetching API:", error);
-  } finally {
-    loaderOverlay.classList.remove('show');
-    setTimeout(() => {
+    if (!student_id) {
         loaderOverlay.style.display = 'none';
-        mainContainer.style.display = 'block';
-    }, 300);
-  }
+        alertModal.classList.add('show');
+        return;
+    }
+
+    loaderOverlay.classList.add('show');
+    console.log(`Student ID from URL parameter "id": ${student_id}`);
+    const url = `https://script.google.com/macros/s/AKfycbz3firdVpBRqy6CewYNeLMRFsmbDk9e_rsiSTDOnY3XIC-KF9B_khI5WxreE_K6m_wO/exec?student_id=${student_id}`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        const { student_name, student_id: studentId, session_log, upcoming_classes, forgetting_curve } = data;
+
+        document.getElementById('student-name-header').textContent = `${student_name}'s Progress Dashboard`;
+        document.getElementById('student-id-span').textContent = `Student ID: ${studentId}`;
+
+        sessionHistoryData = session_log.sort((a, b) => new Date(b.date) - new Date(a.date)).map(item => ({
+            date: new Date(item.date).toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }),
+            startTime: new Date(item.start_time).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }),
+            endTime: new Date(item.end_time).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }),
+            listenRate: item.student_listen_rate * 20, // Assuming 5 is 100%
+            subject: item.subject,
+            teacher: item.teacher
+        }));
+
+        upcomingClassesData = upcoming_classes.sort((a, b) => new Date(a.date) - new Date(b.date)).map(item => ({
+            date: new Date(item.date).toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }),
+            startTime: new Date(item.start_time).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }),
+            endTime: new Date(item.end_time).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }),
+            subject: item.subject,
+            teacher: item.teacher,
+            room: item.class_room_id,
+            sessionId: item.session_temp_id
+        }));
+
+        forgettingCurveData = forgetting_curve;
+
+
+        filterSessionHistory();
+        populateUpcomingClasses('upcoming-classes-table', upcomingClassesData);
+        updateRepetitionCards();
+
+    } catch (error) {
+        console.error("Error fetching API:", error);
+    } finally {
+        loaderOverlay.classList.remove('show');
+        setTimeout(() => {
+            loaderOverlay.style.display = 'none';
+            mainContainer.style.display = 'block';
+        }, 300);
+    }
 }
 
 function populateSessionHistory(tableId, data) {
@@ -201,26 +201,26 @@ function populateUpcomingClasses(tableId, data) {
 
 function updateRepetitionCards() {
     const today = new Date();
-    today.setHours(0, 0, 0, 0); 
+    today.setHours(0, 0, 0, 0);
 
     const tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
 
-    pendingRepsData = forgettingCurveData.filter(r => {        
+    pendingRepsData = forgettingCurveData.filter(r => {
         const repDate = new Date(r['Repetition Date']);
-        repDate.setHours(0,0,0,0);
+        repDate.setHours(0, 0, 0, 0);
         return r['Learned update'] === "" && repDate < today;
     });
 
-    repsDueTodayData = forgettingCurveData.filter(r => {      
+    repsDueTodayData = forgettingCurveData.filter(r => {
         const repDate = new Date(r['Repetition Date']);
-        repDate.setHours(0,0,0,0);
+        repDate.setHours(0, 0, 0, 0);
         return r['Learned update'] === "" && repDate.getTime() === today.getTime();
     });
 
     repsDueTomorrowData = forgettingCurveData.filter(r => {
         const repDate = new Date(r['Repetition Date']);
-        repDate.setHours(0,0,0,0);
+        repDate.setHours(0, 0, 0, 0);
         return r['Learned update'] === "" && repDate.getTime() === tomorrow.getTime();
     });
 
@@ -281,9 +281,9 @@ function renderCalendar() {
 
 function filterSessionHistory() {
     const selectedPeriod = periodSelect.value;
-    const now = new Date(); 
+    const now = new Date();
     let startDate = new Date(now);
-    
+
     switch (selectedPeriod) {
         case 'all-time':
             filteredSessionHistory = [...sessionHistoryData];
@@ -311,7 +311,7 @@ function filterSessionHistory() {
             return sessionDate >= startDate && sessionDate <= now;
         });
     }
-    
+
     populateSessionHistory('session-history-table', filteredSessionHistory.sort((a, b) => new Date(b.date) - new Date(a.date)));
     renderCalendar();
 
