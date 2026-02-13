@@ -111,7 +111,7 @@ async function loadDashboardData() {
 
     loaderOverlay.classList.add('show');
     console.log(`Student ID from URL parameter "id": ${student_id}`);
-    const url = `https://script.google.com/macros/s/AKfycbx-HIKrISL7oyemI7g2eBgSlFDnpM6wXZfxiHg_mqlwUDgyPlIt4oTnChK7f7olxjBN/exec?student_id=${student_id}`;
+    const url = `https://script.google.com/macros/s/AKfycbyaM1cdXI1lAbtf2Jcpb1RLarXNUOdIMVysz8_RSL-zkpEJxnTsI6BmlUMr8dWBG8dd/exec?student_id=${student_id}`;
 
     try {
         const response = await fetch(url);
