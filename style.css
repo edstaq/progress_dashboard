@@ -1,22 +1,27 @@
-
 :root {
     --background-color: #f0f2f5;
     --card-background: #ffffff;
     --text-color: #333;
-    --primary-color: #1E40AF; /* EDSTAQ Brand Blue */
+    --primary-color: #1E40AF;
+    /* EDSTAQ Brand Blue */
     --green-accent: #4caf50;
     --yellow-accent: #fdd835;
     --red-accent: #f44336;
-    --light-brand-accent: #DBEAFE; /* EDSTAQ Light Blue */
-    --light-green-accent: #BBF7D0; /* Brighter Green */
-    --light-yellow-accent: #FEF08A; /* Brighter Yellow */
-    --light-red-accent: #FECACA; /* Brighter Red */
+    --light-brand-accent: #DBEAFE;
+    /* EDSTAQ Light Blue */
+    --light-green-accent: #BBF7D0;
+    /* Brighter Green */
+    --light-yellow-accent: #FEF08A;
+    /* Brighter Yellow */
+    --light-red-accent: #FECACA;
+    /* Brighter Red */
     --border-color: #e0e0e0;
     --hover-background: #f9f9f9;
     --spacing-sm: 8px;
     --spacing-md: 16px;
     --spacing-lg: 24px;
-    --table-header-bg: #f7f7f7; /* Light gray for table headers */
+    --table-header-bg: #f7f7f7;
+    /* Light gray for table headers */
 }
 
 body {
@@ -77,8 +82,13 @@ body {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .container {
@@ -90,7 +100,7 @@ header {
     background-color: var(--card-background);
     padding: var(--spacing-lg);
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -123,18 +133,21 @@ header p {
     margin-block: var(--spacing-lg);
 }
 
-.history-card, .schedule-card {
+.history-card,
+.schedule-card {
     background-color: var(--card-background);
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     margin-block-start: var(--spacing-lg);
     transition: all 0.2s ease-in-out;
-    overflow: hidden; /* Clip the table corners */
+    overflow: hidden;
+    /* Clip the table corners */
 }
 
-.history-card:hover, .schedule-card:hover {
+.history-card:hover,
+.schedule-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
 .card-header {
@@ -142,13 +155,12 @@ header p {
     justify-content: space-between;
     align-items: flex-start;
     gap: var(--spacing-md);
-    padding: var(--spacing-lg); /* Add padding here */
+    padding: var(--spacing-lg);
+    /* Add padding here */
     border-bottom: 1px solid var(--border-color);
 }
 
-.card-header-text {
-    /* No flex properties needed here */
-}
+
 
 .card-header-controls {
     display: flex;
@@ -192,7 +204,8 @@ header p {
 }
 
 .table-container {
-    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-x: auto;
+    /* Enable horizontal scrolling */
 }
 
 table {
@@ -204,7 +217,8 @@ thead th {
     padding: var(--spacing-md);
     text-align: left;
     background-color: var(--table-header-bg);
-    color: #000; /* Black font color */
+    color: #000;
+    /* Black font color */
     font-weight: 600;
     text-transform: uppercase;
     font-size: 12px;
@@ -215,15 +229,18 @@ td {
     text-align: left;
     border-bottom: 1px solid var(--border-color);
     color: #555;
-    font-weight: 400; /* Normal font weight */
+    font-weight: 400;
+    /* Normal font weight */
 }
 
 /* Add left/right padding to the first and last cells */
-th:first-child, td:first-child {
+th:first-child,
+td:first-child {
     padding-left: var(--spacing-lg);
 }
 
-th:last-child, td:last-child {
+th:last-child,
+td:last-child {
     padding-right: var(--spacing-lg);
 }
 
@@ -241,7 +258,8 @@ tbody tr:hover {
     padding: 5px 10px;
     border-radius: 12px;
     color: var(--text-color);
-    font-weight: 600; /* Bold font weight */
+    font-weight: 600;
+    /* Bold font weight */
     text-align: center;
 }
 
@@ -292,7 +310,8 @@ footer {
     gap: var(--spacing-sm);
 }
 
-.day-name, .calendar-day {
+.day-name,
+.calendar-day {
     text-align: center;
     padding: var(--spacing-sm);
     font-size: 14px;
@@ -395,7 +414,8 @@ footer {
         margin-top: 10px;
     }
 
-    th, td {
+    th,
+    td {
         padding: var(--spacing-sm);
         font-size: 12px;
     }
@@ -404,7 +424,8 @@ footer {
         padding: 4px 8px;
     }
 
-    .day-name, .calendar-day {
+    .day-name,
+    .calendar-day {
         font-size: 12px;
         min-height: 40px;
         padding: 4px;
@@ -425,7 +446,7 @@ footer {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal.show {
@@ -440,7 +461,7 @@ footer {
     width: 80%;
     max-width: 600px;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .modal-header {
@@ -476,7 +497,8 @@ footer {
     border-collapse: collapse;
 }
 
-#repetition-table th, #repetition-table td {
+#repetition-table th,
+#repetition-table td {
     border: 1px solid #ddd;
     padding: 8px;
 }
@@ -487,5 +509,55 @@ footer {
 }
 
 #alert-modal .modal-content {
-    max-width: 400px;
+    max-width: 420px;
+    padding: var(--spacing-lg);
+}
+
+.id-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: var(--spacing-lg);
+}
+
+#student-id-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.2s ease;
+    background-color: #f8fafc;
+}
+
+#student-id-input:focus {
+    border-color: var(--primary-color);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.1);
+}
+
+#submit-id-btn {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+#submit-id-btn:hover {
+    background-color: #1e3a8a;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+#submit-id-btn:active {
+    transform: translateY(0);
 }

@@ -1,15 +1,17 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student's Progress Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    <link rel="stylesheet" href="style.css?v=1.2">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
 </head>
+
 <body>
-    <div id="loader-overlay">
+    <div id="loader-overlay" class="show">
         <div class="loader-card">
             <div class="loader"></div>
             <p>Loading Dashboard...</p>
@@ -27,11 +29,15 @@
         </header>
         <main>
             <section class="summary-cards">
-                <summary-card title="Total Sessions Tracked" value="0" id="total-sessions" type="sessions"></summary-card>
-                <summary-card title="Average Listen Rate" value="0%" id="avg-listen-rate" type="listen-rate"></summary-card>
-                <summary-card title="Total Pending Reps" value="0" id="total-pending-reps" type="pending-reps"></summary-card>
+                <summary-card title="Total Sessions Tracked" value="0" id="total-sessions"
+                    type="sessions"></summary-card>
+                <summary-card title="Average Listen Rate" value="0%" id="avg-listen-rate"
+                    type="listen-rate"></summary-card>
+                <summary-card title="Total Pending Reps" value="0" id="total-pending-reps"
+                    type="pending-reps"></summary-card>
                 <summary-card title="Reps Due: TODAY" value="0" id="reps-due-today" type="due-today"></summary-card>
-                <summary-card title="Reps Due: TOMORROW" value="0" id="reps-due-tomorrow" type="due-tomorrow"></summary-card>
+                <summary-card title="Reps Due: TOMORROW" value="0" id="reps-due-tomorrow"
+                    type="due-tomorrow"></summary-card>
             </section>
             <section class="history-card">
                 <div class="card-header">
@@ -161,14 +167,19 @@
     <div id="alert-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Missing Information</h2>
+                <h2>Enter Student ID</h2>
             </div>
             <div class="modal-body">
-                <p>Please provide a valid student ID to access the dashboard.</p>
+                <p>Please enter your student ID to access the dashboard.</p>
+                <div class="id-input-group">
+                    <input type="text" id="student-id-input" placeholder="e.g. ST001">
+                    <button id="submit-id-btn">View Dashboard</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <script src="main.js" type="module"></script>
+    <script src="main.js?v=1.2" type="module"></script>
 </body>
+
 </html>

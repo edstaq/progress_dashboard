@@ -1,4 +1,6 @@
 
+console.log("Antigravity Version 1.2 Loaded");
+
 class SummaryCard extends HTMLElement {
     constructor() {
         super();
@@ -99,17 +101,37 @@ let pendingRepsData = [];
 let repsDueTodayData = [];
 let repsDueTomorrowData = [];
 
-async function loadDashboardData() {
+async function loadDashboardData(idOverride = null) {
     const urlParams = new URLSearchParams(window.location.search);
-    const student_id = urlParams.get('id');
+    let student_id = idOverride || urlParams.get('id');
+
+    // Normalize ID: trim and uppercase
+    if (student_id) {
+        student_id = student_id.trim().toUpperCase();
+    }
+
+    console.log(`Loading dashboard for Student ID: ${student_id || 'NONE'}`);
 
     if (!student_id) {
-        loaderOverlay.style.display = 'none';
+        console.log("No student ID found. Showing entry modal.");
+        loaderOverlay.classList.remove('show');
+        setTimeout(() => {
+            loaderOverlay.style.display = 'none';
+        }, 300);
         alertModal.classList.add('show');
+        document.getElementById('student-id-input').focus();
         return;
     }
 
+    // Explicitly show loader
+    loaderOverlay.style.display = 'flex';
     loaderOverlay.classList.add('show');
+    alertModal.classList.remove('show');
+    mainContainer.style.display = 'none';
+
+    console.log(`Fetching data for student: ${student_id}`);
+
+
     console.log(`Student ID from URL parameter "id": ${student_id}`);
     const url = `https://script.google.com/macros/s/AKfycbyaM1cdXI1lAbtf2Jcpb1RLarXNUOdIMVysz8_RSL-zkpEJxnTsI6BmlUMr8dWBG8dd/exec?student_id=${student_id}`;
 
@@ -149,8 +171,9 @@ async function loadDashboardData() {
         updateRepetitionCards();
 
     } catch (error) {
-        console.error("Error fetching API:", error);
+        console.error("Critical error in loadDashboardData:", error);
     } finally {
+        console.log("Data load sequence finished. Transitioning UI.");
         loaderOverlay.classList.remove('show');
         setTimeout(() => {
             loaderOverlay.style.display = 'none';
@@ -390,5 +413,35 @@ document.getElementById('reps-due-tomorrow').addEventListener('click', () => {
 
 
 
+
+// Student ID Submission Logic
+const studentIdInput = document.getElementById('student-id-input');
+const submitIdBtn = document.getElementById('submit-id-btn');
+
+function submitStudentId() {
+    // Normalize input: trim and uppercase
+    const id = studentIdInput.value.trim().toUpperCase();
+    if (id) {
+        const url = new URL(window.location);
+        url.searchParams.set('id', id);
+        window.history.pushState({}, '', url);
+
+        loadDashboardData(id);
+    } else {
+        studentIdInput.style.borderColor = 'var(--red-accent)';
+        setTimeout(() => {
+            studentIdInput.style.borderColor = 'var(--border-color)';
+        }, 2000);
+    }
+}
+
+submitIdBtn.addEventListener('click', submitStudentId);
+studentIdInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        submitStudentId();
+    }
+});
+
 // Initial Population
 loadDashboardData();
+

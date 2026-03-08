@@ -18,6 +18,7 @@ This document outlines the plan and implementation details for the web applicati
 *   **Calendar View:** A compact monthly calendar of the session history, with days color-coded by listen rate for clear visibility.
 *   **Filter by Period:** A dropdown to filter the session history by various time periods.
 *   **Responsive Design:** The application is fully responsive and adapts to different screen sizes for an optimal experience on mobile, tablet, and PC.
+*   **Student ID Entry Modal:** If the dashboard is accessed without a student ID in the URL, a sleek modal prompts the user to enter their ID, ensuring persistent access and a seamless user experience.
 
 ## Data Points
 
@@ -25,9 +26,10 @@ This document outlines the plan and implementation details for the web applicati
 *   **Upcoming Classes:** Date, Start Time, End Time, Subject, Teacher, Room, Session ID.
 *   **Repetition Plan:** Data on pending repetitions, including due dates.
 
-## Current Plan: Update Mobile KPI Card Layout
+## Current Plan: Completed ID Entry Flow
 
-1.  **Goal:** Change the layout of the KPI summary cards on mobile from a single-column list to a two-column grid.
-2.  **CSS Changes (`style.css`):**
-    *   In the `@media (max-width: 768px)` media query, modify the `.summary-cards` rule.
-    *   Change the `grid-template-columns` property from `1fr` to `repeat(2, 1fr)` to create a two-column grid.
+1.  **Goal:** Add a user-friendly way to enter a student ID when missing from the URL.
+2.  **Implementation:**
+    *   **HTML:** Updated `alert-modal` with an input field and a submit button.
+    *   **CSS:** Added premium styles for the input group, including focus states and hover effects.
+    *   **JS:** Added logic to capture the ID, update the URL without page reload (using History API), and trigger the dashboard data fetch.
